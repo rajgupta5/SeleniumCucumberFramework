@@ -1,4 +1,4 @@
-# This repo contains framework code from udemy course
+# This repo contains framework code of Selenium Framework with Cucumber
 
 ## TechStack
 - JAVA
