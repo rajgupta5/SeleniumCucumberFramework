@@ -2,7 +2,7 @@ package com.ea.framework.controls.api;
 
 import com.ea.framework.controls.internals.Control;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.internal.Locatable;
+import org.openqa.selenium.interactions.Locatable;
 import org.openqa.selenium.internal.WrapsElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;

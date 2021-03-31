@@ -1,6 +1,7 @@
 package com.ea.test.steps;
 
 import com.ea.framework.base.Base;
+import com.ea.framework.utilities.ExcelUtil;
 import com.ea.test.pages.HomePage;
 import com.ea.test.pages.LoginPage;
 import cucumber.api.DataTable;
@@ -42,6 +43,11 @@ public class LoginSteps extends Base {
     public void iEnterUserNameAndPassword(DataTable data) {
         List<List<String>> table = data.raw();
         CurrentPage.As(LoginPage.class).Login(table.get(1).get(0).toString(), table.get(1).get(1).toString());
+    }
+
+    @When("^I enter UserName and Password from Excel$")
+    public void iEnterUserNameAndPassword() {
+        CurrentPage.As(LoginPage.class).Login(ExcelUtil.ReadCell("UserName",1), ExcelUtil.ReadCell("Password",1));
     }
 
     @Then("^I click login button$")
