@@ -1,5 +1,6 @@
 package com.ea.framework.base;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -18,14 +19,15 @@ public class FrameworkInitialize extends Base {
         {
             case Chrome:
             {
+                WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 break;
             }
             case Firefox:
             {
                 //Open the browser
-                System.setProperty("webdriver.gecko.driver", "e:\\libs\\geckodriver.exe");
-                driver= new FirefoxDriver();
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
                 break;
             }
             case IE:

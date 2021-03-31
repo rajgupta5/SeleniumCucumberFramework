@@ -5,7 +5,6 @@ import com.ea.framework.controls.elements.Button;
 import com.ea.framework.controls.elements.ButtonBase;
 import com.ea.framework.controls.elements.TextBox;
 import com.ea.framework.controls.elements.TextBoxBase;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;

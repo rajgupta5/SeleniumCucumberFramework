@@ -2,7 +2,6 @@ package com.ea.test.pages;
 
 import com.ea.framework.base.BasePage;
 import com.ea.framework.controls.elements.HyperLink;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;

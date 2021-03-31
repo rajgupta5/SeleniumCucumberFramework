@@ -9,8 +9,6 @@ import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 
-import java.util.List;
-
 import static com.ea.framework.base.Base.CurrentPage;
 
 /**
