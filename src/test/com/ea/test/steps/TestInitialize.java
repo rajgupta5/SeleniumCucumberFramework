@@ -8,6 +8,7 @@ import com.ea.framework.utilities.DatabaseUtil;
 import com.ea.framework.utilities.ExcelUtil;
 import com.ea.framework.utilities.LogUtil;
 import com.ea.framework.utilities.ReportingUtil;
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
 
@@ -44,5 +45,10 @@ public class TestInitialize extends FrameworkInitialize {
         } catch (Exception e) {
         }
 
+    }
+
+    @After
+    public void tearDown() {
+        DriverContext.getDriver().quit();
     }
 }

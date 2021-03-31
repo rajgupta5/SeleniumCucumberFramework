@@ -15,11 +15,11 @@ import static com.ea.framework.base.Base.CurrentPage;
  * Created by Karthik-pc on 12/6/2016.
  */
 public class EmployeeSteps  {
-    @And("^I click employeeList link$")
-    public void iClickEmployeeListLink() throws Throwable {
-        CurrentPage = CurrentPage.As(HomePage.class).ClickEmployeeList();
-        Thread.sleep(3000);
-    }
+//    @And("^I click employeeList link$")
+//    public void iClickEmployeeListLink() throws Throwable {
+//        CurrentPage = CurrentPage.As(HomePage.class).ClickEmployeeList();
+//        Thread.sleep(3000);
+//    }
 
 
     @Then("^I click createnew button$")

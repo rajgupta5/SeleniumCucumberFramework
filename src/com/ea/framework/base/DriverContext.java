@@ -15,4 +15,9 @@ public class DriverContext {
     public static void setDriver(WebDriver driver) {
         Driver = driver;
     }
+
+    public static WebDriver getDriver() {
+        return Driver;
+    }
+
 }

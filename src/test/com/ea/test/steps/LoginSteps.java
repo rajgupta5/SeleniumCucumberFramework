@@ -1,7 +1,6 @@
 package com.ea.test.steps;
 
 import com.ea.framework.base.Base;
-import com.ea.framework.utilities.ExcelUtil;
 import com.ea.test.pages.HomePage;
 import com.ea.test.pages.LoginPage;
 import cucumber.api.DataTable;
@@ -19,8 +18,8 @@ public class LoginSteps extends Base {
 
     @And("^I ensure application opened$")
     public void iEnsureApplicationOpened() {
-        CurrentPage = GetInstance(HomePage.class);
-        Assert.assertTrue("The login page is not loaded", CurrentPage.As(HomePage.class).IsLogin());
+        CurrentPage = GetInstance(LoginPage.class);
+        Assert.assertTrue("The login page is not loaded", CurrentPage.As(LoginPage.class).IsLogin());
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -29,10 +28,9 @@ public class LoginSteps extends Base {
     }
 
 
-    @Then("^I click login link$")
+    @Then("^I click welcome link$")
     public void iClickLoginLink() {
-        //Navigation to Login Page
-        CurrentPage = CurrentPage.As(HomePage.class).ClickLogin();
+        CurrentPage = CurrentPage.As(HomePage.class).ClickWelcome();
         try {
             Thread.sleep(3000);
         } catch (Exception e) {
@@ -53,10 +51,22 @@ public class LoginSteps extends Base {
         Thread.sleep(3000);
     }
 
-    @Then("^I should see the username with hello$")
-    public void iShouldSeeTheUsernameWithHello() throws Throwable {
-        Assert.assertEquals("The user is not admin", "Hello admin!", CurrentPage.As(HomePage.class).GetLoggedInUser());
+    @Then("^I click logout button$")
+    public void iClickLogoutButton() throws InterruptedException {
+        //Home Page
+        CurrentPage = CurrentPage.As(HomePage.class).ClickLogout();
+        Thread.sleep(3000);
     }
+
+    @And("^I should see Login Page$")
+    public void LoginPageIsLoaded() {
+        iEnsureApplicationOpened();
+    }
+
+//    @Then("^I should see the username with hello$")
+//    public void iShouldSeeTheUsernameWithHello() throws Throwable {
+//        Assert.assertEquals("The user is not admin", "Hello admin!", CurrentPage.As(HomePage.class).GetLoggedInUser());
+//    }
 
 
 }
