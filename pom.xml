@@ -8,12 +8,62 @@
     <artifactId>SeleniumCucumberFramework</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-<dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.21.0</version>
+                <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/java/TestNg.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>3.16.0</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>ExecuteAutomation</projectName>
+                            <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
+                            <cucumberOutput>${project.build.directory}/cucumber-json-report.json</cucumberOutput>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <maven.compiler.source>10</maven.compiler.source>
+        <maven.compiler.target>10</maven.compiler.target>
+    </properties>
+
+
+    <dependencies>
     <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
     <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-java</artifactId>
-        <version>3.141.59</version>
+        <version>4.0.0-alpha-6</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/junit/junit -->
     <dependency>
@@ -35,32 +85,27 @@
         <version>6.1.0.jre8</version>
     </dependency>
 
+        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-testng -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>6.10.2</version>
+        </dependency>
+
     <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-java -->
-    <dependency>
-        <groupId>info.cukes</groupId>
-        <artifactId>cucumber-java</artifactId>
-        <version>1.2.5</version>
-    </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>6.10.2</version>
+        </dependency>
 
-    <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-junit -->
-    <dependency>
-        <groupId>info.cukes</groupId>
-        <artifactId>cucumber-junit</artifactId>
-        <version>1.2.5</version>
-    </dependency>
 
-    <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-testng -->
-    <dependency>
-        <groupId>info.cukes</groupId>
-        <artifactId>cucumber-testng</artifactId>
-        <version>1.2.5</version>
-    </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.testng/testng -->
     <dependency>
         <groupId>org.testng</groupId>
         <artifactId>testng</artifactId>
-        <version>6.9.13.6</version>
+        <version>7.3.0</version>
     </dependency>
 
     <dependency>
@@ -69,5 +114,35 @@
         <version>4.3.1</version>
     </dependency>
 
+    <dependency>
+        <groupId>com.aventstack</groupId>
+        <artifactId>extentreports</artifactId>
+        <version>3.1.5</version>
+        <scope>provided</scope>
+    </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>3.1.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility-proxy</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+
+
 </dependencies>
+
+
 </project>
