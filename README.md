@@ -5,10 +5,11 @@ Make sure you have JAVA 10 or above installed to run this framework
 
 ## TechStack
 - JAVA 10
-- SELENIUM 3.0.1
-- TESTNG 
-- JEXCELAPI FOR READING EXCEL FILES
-- CUCUMBER(1.2.5) - FOR BDD LAYER
-- CUCUMBER PICO CONTAINER FOR DEPENDENCY INJECTION
+- SELENIUM 4
+- TESTNG 7
+- JEXCELAPI - FOR READING EXCEL FILES
+- CUCUMBER 6 - FOR BDD LAYER
+- EXTENT REPORT/ CUCUMBER REPORT
 - MAVEN
-- JENKINS
+  - maven surefire plugin
+  - maven cucumber reporting plugin
