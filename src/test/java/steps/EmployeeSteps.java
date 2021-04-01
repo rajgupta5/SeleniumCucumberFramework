@@ -24,13 +24,13 @@ public class EmployeeSteps  {
         return EmployeeModel.createEmployeeModel(entry);
     }
 
-//    @And("^I click employeeList link$")
-//    public void iClickEmployeeListLink() throws Throwable {
-//        CurrentPageContext.setCurrentPage(CurrentPageContext.getCurrentPage().As(HomePage.class).ClickEmployeeList());
-//        DriverContext.WaitForPageToLoad();
-//        ExtentReport.getScenario().createNode(new GherkinKeyword("And"), "I click employeeList link");
-//
-//    }
+    @And("^I click employeeList link$")
+    public void iClickEmployeeListLink() throws Throwable {
+        CurrentPageContext.setCurrentPage(CurrentPageContext.getCurrentPage().As(HomePage.class).ClickEmployeeList());
+        DriverContext.WaitForPageToLoad();
+        ExtentReport.getScenario().createNode(new GherkinKeyword("And"), "I click employeeList link");
+
+    }
 
 
     @Then("^I click createnew button$")

@@ -8,26 +8,17 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 /**
- * Created by Karthik-PC on 11/24/2016.
+ * Created by Karthik-PC on 11/24/2018.
  */
 public class LoginPage extends BasePage {
 
-//    @FindBy(how = How.NAME, using = "UserName")
-//    public TextBox txtUserName;
-//
-//    @FindBy(how = How.NAME, using = "Password")
-//    public WebElement txtPassword;
-//
-//    @FindBy(how = How.CSS, using = "[class*='btn-default']")
-//    public Button btnLogin;
-
-    @FindBy(how = How.ID, using = "txtUsername")
+    @FindBy(how = How.NAME, using = "UserName")
     public TextBox txtUserName;
 
-    @FindBy(how = How.XPATH, using = "//input[@id='txtPassword' and @type='password']")
+    @FindBy(how = How.NAME, using = "Password")
     public WebElement txtPassword;
 
-    @FindBy(how = How.ID, using = "btnLogin")
+    @FindBy(how = How.CSS, using = "[class*='btn-default']")
     public Button btnLogin;
 
     public void Login(String userName, String password) {
@@ -36,15 +27,9 @@ public class LoginPage extends BasePage {
     }
 
     public HomePage ClickLogin() {
-        btnLogin.PerformSubmit();
+        btnLogin.WaitForVisible().Click();
         return GetInstance(HomePage.class);
     }
-
-    public boolean IsLogin() {
-        return btnLogin.isDisplayed();
-    }
-
-
 
 
 }

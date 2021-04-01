@@ -1,5 +1,6 @@
 package com.ea.framework.controls.internals;
 
+import com.ea.framework.base.DriverContext;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Coordinates;
 
@@ -10,7 +11,6 @@ import java.util.List;
  * Created by Karthik-pc on 12/10/2016.
  */
 public class ControlBase implements Control {
-
 
     private final WebElement element;
 
@@ -35,7 +35,7 @@ public class ControlBase implements Control {
 
     @Override
     public void clear() {
-            element.clear();
+        element.clear();
     }
 
     @Override
@@ -113,4 +113,28 @@ public class ControlBase implements Control {
         return element;
     }
 
+    @Override
+    public ControlBase Wait(){
+        DriverContext.WaitForPageToLoad();
+        return this;
+    }
+
+    @Override
+    public ControlBase WaitForVisible(){
+        DriverContext.WaitForElementVisible(getWrappedElement());
+        return this;
+    }
+
+    @Override
+    public ControlBase Click(){
+        getWrappedElement().click();
+        return this;
+    }
+
+    @Override
+    public ControlBase ScrollToElement(){
+        //JAVA Script
+        return this;
+
+    }
  }

@@ -11,4 +11,11 @@ import org.openqa.selenium.interactions.Locatable;
 
 @ImplementedBy(ControlBase.class)
 public interface Control extends WebElement, WrapsElement, Locatable {
+    ControlBase Wait();
+
+    ControlBase WaitForVisible();
+
+    ControlBase Click();
+
+    ControlBase ScrollToElement();
 }

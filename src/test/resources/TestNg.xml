@@ -16,13 +16,13 @@
             </class>
         </classes>
     </test>
-<!--    <test name="Login" parallel="classes">-->
-<!--        <classes>-->
-<!--            <class name="runner.TestRunner">-->
-<!--                <methods>-->
-<!--                    <include name="EmployeeTest"/>-->
-<!--                </methods>-->
-<!--            </class>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Login" parallel="classes">
+        <classes>
+            <class name="runner.TestRunner">
+                <methods>
+                    <include name="EmployeeTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>

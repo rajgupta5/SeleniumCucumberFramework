@@ -2,35 +2,34 @@ package steps;
 
 import com.aventstack.extentreports.GherkinKeyword;
 import com.ea.framework.base.Base;
+
 import com.ea.framework.base.CurrentPageContext;
-import com.ea.framework.utilities.ExcelUtil;
 import com.ea.framework.utilities.ExtentReport;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
+import org.junit.Assert;
 import pages.HomePage;
 import pages.LoginPage;
-import org.junit.Assert;
-
-import java.util.List;
 
 /**
- * Created by Karthik-pc on 12/6/2016.
+ * Created by Karthik-pc on 02/10/2020.
  */
 public class LoginSteps extends Base {
 
     @And("^I ensure application opened$")
     public void iEnsureApplicationOpened() throws ClassNotFoundException {
-        CurrentPage = GetInstance(LoginPage.class);
-        Assert.assertTrue("The login page is not loaded", CurrentPage.As(LoginPage.class).IsLogin());
+        CurrentPageContext.setCurrentPage(GetInstance(HomePage.class));
+        Assert.assertTrue("The login page is not loaded", CurrentPageContext.getCurrentPage().As(HomePage.class).IsLogin());
+
         ExtentReport.getScenario().createNode(new GherkinKeyword("And"), "I ensure application opened");
     }
 
 
-    @Then("^I click welcome link$")
-    public void iClickLoginLink() {
-        CurrentPage = CurrentPage.As(HomePage.class).ClickWelcome();
+    @Then("^I click login link$")
+    public void iClickLoginLink() throws ClassNotFoundException {
+        //Navigation to Login Page
+        CurrentPageContext.setCurrentPage(CurrentPageContext.getCurrentPage().As(HomePage.class).ClickLogin());
+        ExtentReport.getScenario().createNode(new GherkinKeyword("Then"), "I click login link");
     }
 
     @When("^I enter UserName and Password$")
@@ -40,34 +39,18 @@ public class LoginSteps extends Base {
         ExtentReport.getScenario().createNode(new GherkinKeyword("When"), "I enter UserName and Passwor");
     }
 
-    @When("^I enter UserName and Password from Excel$")
-    public void iEnterUserNameAndPassword() throws ClassNotFoundException {
-        CurrentPage.As(LoginPage.class).Login(ExcelUtil.ReadCell("UserName",1), ExcelUtil.ReadCell("Password",1));
-        ExtentReport.getScenario().createNode(new GherkinKeyword("When"), "I enter UserName and Passwor");
-    }
-
     @Then("^I click login button$")
-    public void iClickLoginButton() throws ClassNotFoundException {
-        CurrentPage = CurrentPage.As(LoginPage.class).ClickLogin();
-        ExtentReport.getScenario().createNode(new GherkinKeyword("Then"), "I click login link");
-    }
-
-    @Then("^I click logout button$")
-    public void iClickLogoutButton() throws ClassNotFoundException {
+    public void iClickLoginButton() throws InterruptedException, ClassNotFoundException {
         //Home Page
-        CurrentPage = CurrentPage.As(HomePage.class).ClickLogout();
-        ExtentReport.getScenario().createNode(new GherkinKeyword("Then"), "I click logout link");
+        CurrentPageContext.setCurrentPage(CurrentPageContext.getCurrentPage().As(LoginPage.class).ClickLogin());
+        ExtentReport.getScenario().createNode(new GherkinKeyword("Then"), "I click login button");
     }
 
-    @And("^I should see Login Page$")
-    public void LoginPageIsLoaded() throws ClassNotFoundException {
-        iEnsureApplicationOpened();
+    @Then("^I should see the username with hello$")
+    public void iShouldSeeTheUsernameWithHello() throws Throwable {
+        Assert.assertEquals("The user is not admin", "Hello admin!", CurrentPageContext.getCurrentPage().As(HomePage.class).GetLoggedInUser());
+        ExtentReport.getScenario().createNode(new GherkinKeyword("Then"), "I should see the username with hello");
     }
-
-//    @Then("^I should see the username with hello$")
-//    public void iShouldSeeTheUsernameWithHello() throws Throwable {
-//        Assert.assertEquals("The user is not admin", "Hello admin!", CurrentPage.As(HomePage.class).GetLoggedInUser());
-//    }
 
 
 }
