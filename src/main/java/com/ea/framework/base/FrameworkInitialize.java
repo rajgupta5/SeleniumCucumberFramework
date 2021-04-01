@@ -4,7 +4,9 @@ import com.ea.framework.config.Settings;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -26,9 +28,10 @@ public class FrameworkInitialize extends Base {
             case Chrome:
             {
                 if(runmode.equalsIgnoreCase("remote")) {
-                    DesiredCapabilities cap = new DesiredCapabilities();
-                    cap.setBrowserName(org.openqa.selenium.remote.BrowserType.CHROME);
-                    driver =new RemoteWebDriver(new URL(Settings.SeleniumGridHub), cap);
+//                    DesiredCapabilities cap = new DesiredCapabilities();
+//                    cap.setBrowserName(org.openqa.selenium.remote.BrowserType.CHROME);
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    driver =new RemoteWebDriver(new URL(Settings.SeleniumGridHub), chromeOptions);
                 }
                 else {
                     WebDriverManager.chromedriver().setup();
@@ -40,9 +43,10 @@ public class FrameworkInitialize extends Base {
             case Firefox:
             {
                 if(runmode.equalsIgnoreCase("remote")) {
-                    DesiredCapabilities cap = new DesiredCapabilities();
-                    cap.setBrowserName(org.openqa.selenium.remote.BrowserType.FIREFOX);
-                    driver =new RemoteWebDriver(new URL(Settings.SeleniumGridHub), cap);
+//                    DesiredCapabilities cap = new DesiredCapabilities();
+//                    cap.setBrowserName(org.openqa.selenium.remote.BrowserType.FIREFOX);
+                    FirefoxOptions firefoxOptions = new FirefoxOptions();
+                    driver =new RemoteWebDriver(new URL(Settings.SeleniumGridHub), firefoxOptions);
                 }
                 else {
                     WebDriverManager.firefoxdriver().setup();

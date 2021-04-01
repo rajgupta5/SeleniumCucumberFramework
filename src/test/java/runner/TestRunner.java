@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 /**
  * Created by Karthik-pc on 02/10/2020.
  */
-@CucumberOptions(features = {"src/test/java/features/"}, glue = {"steps"})
+@CucumberOptions(features = {"src/test/java/features/"}, glue = {"steps"}, plugin = {"json:target/cucumber.json"})
 public class TestRunner {
 
 

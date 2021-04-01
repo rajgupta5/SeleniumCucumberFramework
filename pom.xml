@@ -25,7 +25,7 @@
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/java/TestNg.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/TestNg.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
@@ -44,7 +44,7 @@
                         <configuration>
                             <projectName>ExecuteAutomation</projectName>
                             <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
-                            <cucumberOutput>${project.build.directory}/cucumber-json-report.json</cucumberOutput>
+                            <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
                         </configuration>
                     </execution>
                 </executions>
